@@ -27,7 +27,7 @@ plot_data.plot(kind='bar', x=plot_data.columns[0], y=plot_data.columns[1:6], col
 plt.legend(ncol=len(plot_data.columns[1:6]), loc='upper center', fontsize=font_size - 1)  # , bbox_to_anchor=(0.5, 1.1)
 plt.grid(axis='x')
 plt.xticks(rotation=0)
-plt.savefig("avg_latency.png", bbox_inches='tight')
+plt.savefig("avg_latency.svg", bbox_inches='tight', format='svg')
 # plt.show()
 
 # Falsefull
@@ -40,7 +40,7 @@ plot_data.plot(kind='bar', x=plot_data.columns[0], y=plot_data.columns[2:5], col
 plt.legend(ncol=len(plot_data.columns[1:6]), loc='upper center', fontsize=font_size - 2)  # , bbox_to_anchor=(0.5, 1.1)
 plt.grid(axis='x')
 plt.xticks(rotation=0)
-plt.savefig("avg_falseful.png", bbox_inches='tight')
+plt.savefig("avg_falseful.svg", bbox_inches='tight', format='svg')
 # plt.show()
 
 # Unique RMC configurations
@@ -49,13 +49,15 @@ sheet_name = "final allocation summary graph"
 
 plot_data = pd.read_excel("\\".join([graphs_dir, excel_file]), sheet_name=sheet_name)
 ax = plot_data.plot(kind='barh', x=plot_data.columns[0], y=plot_data.columns[1:4], color=['#ED7D31', '#A5A5A5', '#3660AC'],
-                    ylim=[0, 100], ylabel='Frequency', xlabel='', fontsize=font_size, width=0.40, stacked=True, figsize=(10, 2.5), legend=None)
-# plt.legend(loc='upper center', fontsize=font_size - 1, bbox_to_anchor=(0.5, 1.42))  # , bbox_to_anchor=(0.5, 1.1)
+                    ylim=[0, 100], ylabel='Frequency', xlabel='', fontsize=font_size, width=0.40, stacked=True, figsize=(10, 2.5))
+# plt.plot([], [], ' ', label="Unique RMC Configurations=")
+plt.text(0.05, 2.65, "Unique RMC Configurations=", fontsize=font_size + 1)
+plt.legend(ncol=len(plot_data.columns[1:5]), loc='upper center', fontsize=font_size - 1, bbox_to_anchor=(0.66, 1.25))  # , bbox_to_anchor=(0.5, 1.1)
 # plt.get_l
 plt.grid(axis='x')
 plt.xticks(rotation=0)
 ax.xaxis.set_major_formatter(mtick.PercentFormatter(1.0))
-plt.savefig("allocation_summary.png", bbox_inches='tight')
+plt.savefig("allocation_summary.svg", bbox_inches='tight', format='svg')
 # plt.show()
 
 # Energy Consumption
@@ -68,7 +70,7 @@ plot_data.plot(kind='bar', x=plot_data.columns[0], y=plot_data.columns[1:5], col
 plt.legend(ncol=len(plot_data.columns[1:5]), loc='upper center', fontsize=font_size - 1)  # , bbox_to_anchor=(0.5, 1.1)
 plt.grid(axis='x')
 plt.xticks(rotation=0)
-plt.savefig("energy.png", bbox_inches='tight')
+plt.savefig("energy.svg", bbox_inches='tight', format='svg')
 # plt.show()
 
 # scalability
@@ -81,5 +83,5 @@ plot_data.plot(kind='bar', x=plot_data.columns[0], y=plot_data.columns[1:5], col
 plt.legend(ncol=len(plot_data.columns[1:5]), loc='upper center', fontsize=font_size)  # , bbox_to_anchor=(1.2, 1))
 plt.grid(axis='x')
 plt.xticks(rotation=0)
-plt.savefig("scalability.png", bbox_inches='tight')
+plt.savefig("scalability.svg", bbox_inches='tight', format='svg')
 # plt.show()
